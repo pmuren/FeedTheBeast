@@ -1,8 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5l35a18dno12"]
+[gd_scene load_steps=5 format=3 uid="uid://c5l35a18dno12"]
 
 [ext_resource type="PackedScene" uid="uid://dx7il1ytv84qu" path="res://player.tscn" id="1_djddm"]
+[ext_resource type="Script" path="res://Main.gd" id="1_do8ow"]
+[ext_resource type="PackedScene" uid="uid://baicbm4soyamf" path="res://radish.tscn" id="2_3o1he"]
+
+[sub_resource type="Curve2D" id="Curve2D_d51y2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 380, 179, 0, 0, 0, 0, 845, 262, 0, 0, 0, 0, 1460, 323, 0, 0, 0, 0, 1090, 492, 0, 0, 0, 0, 517, 584, 0, 0, 0, 0, 1036, 775, 0, 0, 0, 0, 1781, 629, 0, 0, 0, 0, 1386, 1011, 0, 0, 0, 0, 584, 934, 0, 0, 0, 0, 380, 179)
+}
+point_count = 10
 
 [node name="Main" type="Node"]
+script = ExtResource("1_do8ow")
+radish_scene = ExtResource("2_3o1he")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+y_sort_enabled = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.384314, 0.709804, 0.737255, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_djddm")]
-visible = true
+scale = Vector2(1, 1)
+
+[node name="RadishTimer" type="Timer" parent="."]
+wait_time = 11.0
+
+[node name="RadishPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_d51y2")
+
+[node name="RadishSpawnLocation" type="PathFollow2D" parent="RadishPath"]
+position = Vector2(380, 179)
+rotation = 0.176634
+
+[connection signal="timeout" from="RadishTimer" to="." method="_on_RadishTimer_timeout"]
+[connection signal="timeout" from="RadishTimer" to="." method="_on_radish_timer_timeout"]

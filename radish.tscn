@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://baicbm4soyamf"]
+
+[ext_resource type="Texture2D" uid="uid://ubgake0b2y1u" path="res://sprites/pixel-radish.png" id="1_05mbe"]
+[ext_resource type="Script" path="res://Radish.gd" id="1_bcdc0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qejpi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_05mbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_05mbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_05mbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_05mbe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4f2a0"]
+
+[node name="Radish" type="RigidBody2D" groups=["radishes"]]
+position = Vector2(-2, 5)
+collision_mask = 0
+gravity_scale = 1.66533e-16
+script = ExtResource("1_bcdc0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(81.9999, 69)
+scale = Vector2(0.09, 0.09)
+sprite_frames = SubResource("SpriteFrames_qejpi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(76, 73)
+rotation = 0.825541
+scale = Vector2(3, 3)
+shape = SubResource("CapsuleShape2D_4f2a0")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(81, 66.5)
+scale = Vector2(1.5, 2.05)
