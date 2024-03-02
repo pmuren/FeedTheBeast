@@ -23,15 +23,17 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_icrdu"]
+radius = 53.0
+height = 178.0
 
 [node name="Player" type="Area2D"]
-position = Vector2(574, 316)
+position = Vector2(568, 263)
 script = ExtResource("1_7bp0h")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4h2px")
-animation = &"up"
+animation = &"right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_icrdu")
