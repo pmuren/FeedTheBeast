@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx7il1ytv84qu"]
+[gd_scene load_steps=7 format=3 uid="uid://dx7il1ytv84qu"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_7bp0h"]
 [ext_resource type="Texture2D" uid="uid://do0gktc5jin48" path="res://sprites/protag.png" id="1_i68cs"]
+[ext_resource type="Script" path="res://grabbies.gd" id="3_wmjwa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4h2px"]
 animations = [{
@@ -26,10 +27,11 @@ animations = [{
 radius = 53.0
 height = 178.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5r2h8"]
+
 [node name="Player" type="Area2D"]
 z_as_relative = false
 position = Vector2(568, 263)
-scale = Vector2(2, 2)
 disable_mode = 2
 script = ExtResource("1_7bp0h")
 metadata/_edit_group_ = true
@@ -42,10 +44,13 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_icrdu")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="Grabbies" type="Area2D" parent="."]
+position = Vector2(40, 20)
+script = ExtResource("3_wmjwa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("CapsuleShape2D_icrdu")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grabbies"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(6, 6)
+shape = SubResource("CapsuleShape2D_5r2h8")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
+[connection signal="body_entered" from="Grabbies" to="Grabbies" method="_on_body_entered"]

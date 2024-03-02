@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlb15irxoqtk"]
+
+[ext_resource type="Texture2D" uid="uid://ch83lphpbek31" path="res://sprites/turnip.png" id="1_ltr5j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uxmf4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_08rlv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ltr5j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Vegetable" type="RigidBody2D"]
+z_index = 1
+gravity_scale = 1.66533e-16
+freeze_mode = 1
+linear_damp = 0.2
+angular_damp = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_uxmf4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_08rlv")

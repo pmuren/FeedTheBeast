@@ -40,3 +40,8 @@ rotation = 0.176634
 
 [connection signal="timeout" from="RadishTimer" to="." method="_on_RadishTimer_timeout"]
 [connection signal="timeout" from="RadishTimer" to="." method="_on_radish_timer_timeout"]
+
+[node name="Vegetable" parent="." instance=ExtResource("2_qgm25")]
+position = Vector2(887, 250)
+linear_damp = 5.0
+angular_damp = 2.0

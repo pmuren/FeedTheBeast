@@ -8,8 +8,6 @@ var screen_size # Size of the game window.
 
 func _ready(): 
 	screen_size = get_viewport_rect().size
-	#hide()
-
 
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -34,11 +32,11 @@ func _process(delta):
 
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "right"
-		$AnimatedSprite2D.flip_v = false
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = velocity.y > 0
+		scale.x = 1 if velocity.x > 0 else -1
+
+	#elif velocity.y != 0:
+		#$AnimatedSprite2D.animation = "up"
+		#$AnimatedSprite2D.flip_v = velocity.y > 0
 
 
 func start(pos):
