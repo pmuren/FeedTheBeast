@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://c5uwf23ovlppg"]
+
+[ext_resource type="Texture2D" uid="uid://do0gktc5jin48" path="res://sprites/protag.png" id="1_qupd3"]
+
+[resource]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qupd3")
+}],
+"loop": false,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qupd3")
+}],
+"loop": false,
+"name": &"up",
+"speed": 5.0
+}]
