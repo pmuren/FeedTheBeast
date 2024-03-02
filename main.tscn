@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5l35a18dno12"]
+[gd_scene load_steps=6 format=3 uid="uid://c5l35a18dno12"]
 
 [ext_resource type="PackedScene" uid="uid://dx7il1ytv84qu" path="res://player.tscn" id="1_djddm"]
 [ext_resource type="Script" path="res://Main.gd" id="1_do8ow"]
 [ext_resource type="PackedScene" uid="uid://baicbm4soyamf" path="res://radish.tscn" id="2_3o1he"]
+[ext_resource type="PackedScene" path="res://vegetable.tscn" id="4_1xkml"]
 
 [sub_resource type="Curve2D" id="Curve2D_d51y2"]
 _data = {
@@ -26,7 +27,6 @@ grow_vertical = 2
 color = Color(0.384314, 0.709804, 0.737255, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_djddm")]
-scale = Vector2(1, 1)
 
 [node name="RadishTimer" type="Timer" parent="."]
 wait_time = 11.0
@@ -38,10 +38,10 @@ curve = SubResource("Curve2D_d51y2")
 position = Vector2(380, 179)
 rotation = 0.176634
 
-[connection signal="timeout" from="RadishTimer" to="." method="_on_RadishTimer_timeout"]
-[connection signal="timeout" from="RadishTimer" to="." method="_on_radish_timer_timeout"]
-
-[node name="Vegetable" parent="." instance=ExtResource("2_qgm25")]
-position = Vector2(887, 250)
+[node name="Vegetable" parent="." instance=ExtResource("4_1xkml")]
+position = Vector2(1182, 186)
 linear_damp = 5.0
 angular_damp = 2.0
+
+[connection signal="timeout" from="RadishTimer" to="." method="_on_RadishTimer_timeout"]
+[connection signal="timeout" from="RadishTimer" to="." method="_on_radish_timer_timeout"]
