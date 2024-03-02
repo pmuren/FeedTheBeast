@@ -53,3 +53,7 @@ func _on_body_entered(body):
 
 
 
+
+
+func _on_rigid_body_2d_body_entered(body):
+	emit_signal("hit")
