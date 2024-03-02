@@ -5,3 +5,4 @@
 [node name="Main" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_djddm")]
+visible = true

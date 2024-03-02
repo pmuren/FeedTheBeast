@@ -27,7 +27,7 @@ radius = 53.0
 height = 178.0
 
 [node name="Player" type="Area2D"]
-z_index = 20
+z_as_relative = false
 position = Vector2(568, 263)
 scale = Vector2(2, 2)
 disable_mode = 2
@@ -37,6 +37,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4h2px")
 animation = &"up"
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_icrdu")
