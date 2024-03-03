@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dix8syu6ud4je"]
+
+[ext_resource type="Script" path="res://monster.gd" id="1_3ha7s"]
+[ext_resource type="Texture2D" uid="uid://cs7ocme1m2h4c" path="res://sprites/creepy-pixel-anemone-monster.jpg" id="1_og6ie"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6q8xk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_og6ie")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iw13e"]
+size = Vector2(296, 235)
+
+[node name="Monster" type="Area2D"]
+position = Vector2(20, 4)
+script = ExtResource("1_3ha7s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(307, 494)
+sprite_frames = SubResource("SpriteFrames_6q8xk")
+
+[node name="MonsterCollision" type="CollisionShape2D" parent="."]
+position = Vector2(309, 489)
+shape = SubResource("RectangleShape2D_iw13e")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

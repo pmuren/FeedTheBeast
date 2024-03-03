@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5l35a18dno12"]
+[gd_scene load_steps=7 format=3 uid="uid://c5l35a18dno12"]
 
 [ext_resource type="PackedScene" uid="uid://dx7il1ytv84qu" path="res://player.tscn" id="1_djddm"]
 [ext_resource type="Script" path="res://Main.gd" id="1_do8ow"]
 [ext_resource type="PackedScene" uid="uid://baicbm4soyamf" path="res://radish.tscn" id="2_3o1he"]
 [ext_resource type="PackedScene" path="res://vegetable.tscn" id="4_1xkml"]
+[ext_resource type="PackedScene" uid="uid://dix8syu6ud4je" path="res://monster.tscn" id="5_c2hg1"]
 
 [sub_resource type="Curve2D" id="Curve2D_d51y2"]
 _data = {
@@ -43,5 +44,8 @@ position = Vector2(1182, 186)
 linear_damp = 5.0
 angular_damp = 2.0
 
-[connection signal="timeout" from="RadishTimer" to="." method="_on_RadishTimer_timeout"]
+[node name="Monster" parent="." instance=ExtResource("5_c2hg1")]
+position = Vector2(1454, -101)
+
 [connection signal="timeout" from="RadishTimer" to="." method="_on_radish_timer_timeout"]
+[connection signal="timeout" from="RadishTimer" to="." method="_on_RadishTimer_timeout"]
