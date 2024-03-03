@@ -1,6 +1,7 @@
 extends Area2D
 
 var held: RigidBody2D = null
+var liftDistance = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,23 +15,24 @@ func _process(_delta):
 			$CollisionShape2D.disabled = false
 		else:
 			$CollisionShape2D.disabled = true
+			var saved_player_scale = get_parent().scale
 			held.reparent(get_node("/root"))
-			held.scale = Vector2(1, 1)
+			#held.rotation = 0
+			#if !held.is_in_group("Creatures"):
 			held.freeze = false
+			held.lock_rotation = false
 			held.apply_impulse(Vector2(2000 * get_parent().scale.x, 0))
-			#held.apply_torque(50000)
+			held.apply_torque(500000)
 			held = null
-			position.y += 60
-			print("throw it!")
+			position.y += liftDistance
 			
 	if Input.is_action_just_released("use_grabbies"):
 		$CollisionShape2D.disabled = true
 
-
 func _on_body_entered(body: RigidBody2D):
-	if(held == null):
+	if(held == null and body.is_in_group("Grabbable")):
 		held = body
-		position.y -= 60
+		position.y -= liftDistance
 		body.set_deferred("freeze", true)
 		body.call_deferred("reparent", self)
 		body.set_deferred("position", Vector2.ZERO)

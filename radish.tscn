@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://baicbm4soyamf"]
+[gd_scene load_steps=7 format=3 uid="uid://g4fe2i6uwu2s"]
 
 [ext_resource type="Texture2D" uid="uid://ubgake0b2y1u" path="res://sprites/pixel-radish.png" id="1_05mbe"]
 [ext_resource type="Script" path="res://Radish.gd" id="1_bcdc0"]
@@ -24,6 +24,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4f2a0"]
+height = 26.3774
 
 [sub_resource type="GDScript" id="GDScript_aawrw"]
 script/source = "extends Area2D
@@ -43,28 +44,39 @@ func _on_area_entered(area):
 	hide()
 "
 
-[node name="Radish" type="RigidBody2D" groups=["radishes"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7xalx"]
+
+[node name="Radish" type="RigidBody2D" groups=["Grabbable", "radishes"]]
 position = Vector2(-2, 5)
 collision_mask = 0
 gravity_scale = 1.66533e-16
+linear_damp = 1.0
 script = ExtResource("1_bcdc0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(81.9999, 69)
+position = Vector2(2, -5.00001)
 scale = Vector2(0.09, 0.09)
 sprite_frames = SubResource("SpriteFrames_qejpi")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(81, 66.5)
+position = Vector2(2, -5)
 scale = Vector2(1.5, 2.05)
 
-[node name="RadishCollision" type="CollisionShape2D" parent="."]
-position = Vector2(76, 73)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -3)
 rotation = 0.825541
 scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_4f2a0")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["Hitboxes"]]
+collision_layer = 2
 script = SubResource("GDScript_aawrw")
 
-[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-2, -2)
+scale = Vector2(4.21, 4.21)
+shape = SubResource("CircleShape2D_7xalx")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
