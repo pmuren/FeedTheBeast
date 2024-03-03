@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dx7il1ytv84qu" path="res://player.tscn" id="1_djddm"]
 [ext_resource type="Script" path="res://Main.gd" id="1_do8ow"]
-[ext_resource type="PackedScene" uid="uid://baicbm4soyamf" path="res://radish.tscn" id="2_3o1he"]
-[ext_resource type="PackedScene" path="res://vegetable.tscn" id="4_1xkml"]
+[ext_resource type="PackedScene" uid="uid://g4fe2i6uwu2s" path="res://radish.tscn" id="2_3o1he"]
+[ext_resource type="PackedScene" uid="uid://l2ko13j5jjwj" path="res://creature.tscn" id="5_2jkx1"]
 
 [sub_resource type="Curve2D" id="Curve2D_d51y2"]
 _data = {
@@ -29,7 +29,7 @@ color = Color(0.384314, 0.709804, 0.737255, 1)
 [node name="Player" parent="." instance=ExtResource("1_djddm")]
 
 [node name="RadishTimer" type="Timer" parent="."]
-wait_time = 11.0
+wait_time = 10.0
 
 [node name="RadishPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_d51y2")
@@ -38,10 +38,8 @@ curve = SubResource("Curve2D_d51y2")
 position = Vector2(380, 179)
 rotation = 0.176634
 
-[node name="Vegetable" parent="." instance=ExtResource("4_1xkml")]
-position = Vector2(1182, 186)
-linear_damp = 5.0
-angular_damp = 2.0
+[node name="Creature" parent="." instance=ExtResource("5_2jkx1")]
+position = Vector2(1332, 403)
 
 [connection signal="timeout" from="RadishTimer" to="." method="_on_RadishTimer_timeout"]
 [connection signal="timeout" from="RadishTimer" to="." method="_on_radish_timer_timeout"]
