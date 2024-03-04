@@ -1,31 +1,57 @@
-[gd_scene load_steps=7 format=3 uid="uid://dx7il1ytv84qu"]
+[gd_scene load_steps=10 format=3 uid="uid://dx7il1ytv84qu"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_7bp0h"]
-[ext_resource type="Texture2D" uid="uid://do0gktc5jin48" path="res://sprites/protag.png" id="1_i68cs"]
+[ext_resource type="Texture2D" uid="uid://c16acqdfoam3f" path="res://sprites/SoftJam/FishyProtag/Left/2.png" id="2_s55h3"]
+[ext_resource type="Texture2D" uid="uid://cvcr5g7diyjlt" path="res://sprites/SoftJam/FishyProtag/Left/4.png" id="3_4lfii"]
 [ext_resource type="Script" path="res://grabbies.gd" id="3_wmjwa"]
+[ext_resource type="Texture2D" uid="uid://c2ltdhufwbgyw" path="res://sprites/SoftJam/FishyProtag/Left/1.png" id="3_ync78"]
+[ext_resource type="Texture2D" uid="uid://bn16xqser34g3" path="res://sprites/SoftJam/FishyProtag/Left/3.png" id="4_8oa6j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4h2px"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_i68cs")
+"texture": ExtResource("2_s55h3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4lfii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8oa6j")
 }],
 "loop": false,
-"name": &"right",
-"speed": 5.0
+"name": &"grab",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_i68cs")
+"texture": ExtResource("2_s55h3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ync78")
 }],
 "loop": false,
-"name": &"up",
-"speed": 5.0
+"name": &"right",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8oa6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4lfii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s55h3")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 3.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_icrdu"]
 radius = 53.0
-height = 178.0
+height = 272.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5r2h8"]
 
@@ -37,9 +63,10 @@ script = ExtResource("1_7bp0h")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_4h2px")
-animation = &"up"
-frame_progress = 1.0
+animation = &"right"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_icrdu")

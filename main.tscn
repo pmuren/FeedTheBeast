@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dx7il1ytv84qu" path="res://player.tscn" id="1_djddm"]
 [ext_resource type="Script" path="res://Main.gd" id="1_do8ow"]
 [ext_resource type="PackedScene" uid="uid://g4fe2i6uwu2s" path="res://radish.tscn" id="2_3o1he"]
-[ext_resource type="PackedScene" uid="uid://l2ko13j5jjwj" path="res://creature.tscn" id="5_2jkx1"]
-[ext_resource type="PackedScene" path="res://monster.tscn" id="5_c2hg1"]
+[ext_resource type="PackedScene" path="res://creature.tscn" id="5_2jkx1"]
+[ext_resource type="PackedScene" uid="uid://dix8syu6ud4je" path="res://monster.tscn" id="5_c2hg1"]
 
 [sub_resource type="Curve2D" id="Curve2D_d51y2"]
 _data = {
